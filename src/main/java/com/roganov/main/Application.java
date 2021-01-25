@@ -50,4 +50,3 @@ public class Application {
 }
 // /add-8-newProd1-200.00
 // /del-8
-// For lesson 1 commit on new branch, spring January 2021 course.
