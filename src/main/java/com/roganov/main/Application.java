@@ -21,6 +21,11 @@ public class Application {
         ProductRepository repository = (ProductRepository) context.getBean("repository");
         Cart cart = (Cart) context.getBean("cart");
         cart.setRepository(repository);
+        try {
+            new Init(repository).run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         new Thread(new Runnable() {
             @Override
