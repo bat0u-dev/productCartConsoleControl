@@ -1,4 +1,4 @@
-package com.roganov.service;
+package com.roganov.interfaces;
 
 public interface IProduct {
 

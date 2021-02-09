@@ -1,7 +1,7 @@
 package com.roganov.main;
 
-import com.roganov.service.Product;
-import com.roganov.service.ProductRepository;
+import com.roganov.entities.Product;
+import com.roganov.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 

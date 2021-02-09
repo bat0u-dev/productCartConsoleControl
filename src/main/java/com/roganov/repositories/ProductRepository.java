@@ -1,15 +1,24 @@
-package com.roganov.service;
+package com.roganov.repositories;
 
-import org.springframework.context.annotation.Bean;
+import com.roganov.entities.Product;
+import com.roganov.interfaces.IProduct;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ProductRepository {
     private IProduct product;
     private final HashMap<Integer,IProduct> productMap = new HashMap<>();
+    private final List<Product> productList = new ArrayList<>();
+
+    public ProductRepository(){
+        productList.add(new Product(5,"testtest",900.1));
+    }
 
     public IProduct getProduct() {
         return product;
@@ -19,6 +28,12 @@ public class ProductRepository {
         return productMap;
     }
 
+    public List<Product> getProductList(){
+        for (Map.Entry<Integer, IProduct> entry: this.productMap.entrySet()) {
+            productList.add((Product) entry.getValue());
+        }
+        return productList;
+    }
     @PostConstruct
     private void addDefaultProd(){
         this.addProduct(new Product(1, "Балалайка", 100.0));
@@ -31,26 +46,30 @@ public class ProductRepository {
     }
 
     public boolean addProduct(IProduct product){
-        this.getProductMap().put(product.getId(),product);
-        return true;
+        return this.getProductMap().put(product.getId(),product) != null;
+
     }
 
     public boolean delProduct(int id){
-        this.getProductMap().remove(id);
-        return true;
+        return this.getProductMap().remove(id) != null;
     }
 
-    public void printProdById(int id){
+    public boolean printProdById(int id){
+        if(this.getProdById(id)!=null){
         String title = this.getProdById(id).getTitle();
         double coast = this.getProdById(id).getCoast();
-        System.out.println(id + " - " + title + " - " + coast);
+        System.out.println(id + " - " + title + " - " + coast);}
+        else {
+            return false;
+        }
+        return true;
     }
 
     public void printProdList(){
         this.getProductMap().forEach((id,product) -> printProdById(id));
     }
 
-    private Product getProdById(int id){
+    public Product getProdById(int id){
         return (Product) this.getProductMap().get(id);
     }
 }
