@@ -1,5 +1,6 @@
-package com.roganov.service;
+package com.roganov.entities;
 
+import com.roganov.interfaces.IProduct;
 import org.springframework.stereotype.Component;
 
 @Component

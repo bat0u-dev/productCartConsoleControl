@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<h1>Product Form Result</h1>
+<ul th:each="prod: ${prodList}">
+    <li th:text="${prod.title}">product title</li>
+    <li th:text="${prod.coast}">product coast</li>
+</ul>
+</body>
+</html>
