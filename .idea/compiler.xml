@@ -9,9 +9,8 @@
         <module name="productCartConsoleControl" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="14">
+    <bytecodeTargetLevel target="15">
       <module name="productCartConsoleControl" target="11" />
-      <module name="spring3" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

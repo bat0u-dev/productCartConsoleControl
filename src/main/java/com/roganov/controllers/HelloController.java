@@ -14,17 +14,12 @@ import java.util.List;
 
 @Controller
 public class HelloController {
-    ProductRepository repository;
-//    ProductService productService;
 
-//    @Autowired
-//    public void setProductService(ProductService productService){
-//        this.productService = productService;
-//    }
+    ProductService productService;
 
     @Autowired
-    public void setRepository(ProductRepository repository){
-        this.repository = repository;
+    public void setProductService(ProductService productService){
+        this.productService = productService;
     }
 
     @GetMapping("/")
@@ -35,12 +30,9 @@ public class HelloController {
 
     @GetMapping("/all")
     public String showAllProd(Model model){
-//        Product product1 = new Product(12,"test1",8.0);
-//        Product product2 = new Product(13,"test2",90.1);
-//        List<Product> testList = List.of(product1,product2);
-        List<Product> prodList = repository.getProductList();
-//        model.addAttribute("testList", testList);
-        model.addAttribute("testList", prodList);
+
+        List<Product> prodList = productService.getProductsList();
+        model.addAttribute("prodList", prodList);
         return "product-all";
     }
 }
